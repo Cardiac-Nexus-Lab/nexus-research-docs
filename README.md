@@ -11,7 +11,8 @@ This repository maintains the written record of the project’s research directi
 ```text
 .
 ├── experiments/
-│   └── 001_ecg_mi_baseline.md
+│   ├── 001_ecg_mi_baseline.md
+│   └── 002_ecg_explainability_integrated_gradients.md
 └── README.md
 ```
 
@@ -29,11 +30,14 @@ Experiment records include:
 - Reproduction instructions
 - Follow-up questions and next experiments
 
-## Completed baseline
+## Completed experiments
 
-The first documented experiment evaluates a 12-lead ECG baseline for MI versus non-MI classification using the PTB-XL dataset.
+| Record | Subject | Outcome |
+| --- | --- | --- |
+| [001](experiments/001_ecg_mi_baseline.md) | 12-lead ECG baseline, MI versus non-MI, PTB-XL | Test AUROC 0.920 |
+| [002](experiments/002_ecg_explainability_integrated_gradients.md) | Integrated Gradients attribution over the baseline | Attribution computed and rendered for four test recordings |
 
-Read the report: [Experiment 001 — ECG MI versus Non-MI Baseline](experiments/001_ecg_mi_baseline.md)
+Together these cover the two methods the project is built on: a deep learning classifier, and an explanation of what that classifier responded to.
 
 ## Documentation standards
 
@@ -56,9 +60,20 @@ Patient-identifiable information, confidential hospital records, credentials, an
 
 ## Project repositories
 
-- [Nexus AI Engine](https://github.com/Cardiac-Nexus-Lab/nexus-ai-engine) — signal-processing and model-development code
-- [Nexus Web Portal](https://github.com/Cardiac-Nexus-Lab/nexus-web-portal) — user-facing application and later inference integration
+The project is divided across three repositories. Each owns one kind of work, and work should be committed to the repository that owns it rather than duplicated.
+
+| Repository | Owns | Contains |
+| --- | --- | --- |
+| [Nexus AI Engine](https://github.com/Cardiac-Nexus-Lab/nexus-ai-engine) | Code and artifacts | Notebooks, training and evaluation code, preprocessing, model checkpoints, raw metric records, generated figures |
+| [Nexus Research Docs](https://github.com/Cardiac-Nexus-Lab/nexus-research-docs) | The written record | Experiment reports, methodology, decisions, literature notes, ethics and regulatory planning, roadmap |
+| [Nexus Web Portal](https://github.com/Cardiac-Nexus-Lab/nexus-web-portal) | The application | User-facing interface, inference integration, deployment configuration |
+
+The boundary between the first two repositories is the distinction between an artifact and its interpretation. A metric printed by a notebook, the checkpoint that produced it, and the figure it rendered are artifacts and belong in the AI engine. The report that explains what the experiment was, why it was configured that way, what the result means, and where it falls short is interpretation and belongs here.
+
+The web portal consumes artifacts from the AI engine rather than storing its own copies of them.
 
 ## Project status
 
-The documentation repository is currently recording the initial ECG baseline and its evaluation. Future records will cover model comparisons, interpretation methods, local data planning, validation, and deployment decisions.
+Two experiments are recorded: an ECG baseline classifier and an explainability evaluation over it. Neither has undergone external validation, calibration analysis, or clinical review.
+
+Planned next records cover multi-label diagnostic classification, additional modalities, local data planning, and deployment decisions.
