@@ -12,7 +12,8 @@ This repository maintains the written record of the project’s research directi
 .
 ├── experiments/
 │   ├── 001_ecg_mi_baseline.md
-│   └── 002_ecg_explainability_integrated_gradients.md
+│   ├── 002_ecg_explainability_integrated_gradients.md
+│   └── 003_multilabel_architecture_and_calibration.md
 └── README.md
 ```
 
@@ -36,6 +37,7 @@ Experiment records include:
 | --- | --- | --- |
 | [001](experiments/001_ecg_mi_baseline.md) | 12-lead ECG baseline, MI versus non-MI, PTB-XL | Test AUROC 0.920 |
 | [002](experiments/002_ecg_explainability_integrated_gradients.md) | Integrated Gradients attribution over the baseline | Attribution computed and rendered for four test recordings |
+| [003](experiments/003_multilabel_architecture_and_calibration.md) | Five diagnostic superclasses, architecture search, calibration | Test macro AUROC 0.911; mean ECE 0.091 to 0.015 |
 
 Together these cover the two methods the project is built on: a deep learning classifier, and an explanation of what that classifier responded to.
 
